@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Coffee Haven</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fffaf2;
+}
+
+/* Navbar */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav h2{
+    color:#a85e25;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:20px;
+}
+
+nav a{
+    text-decoration:none;
+    color:black;
+    font-size:18px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:orange;
+}
+
+/* Hero */
+
+.hero{
+
+    height:100vh;
+
+    background-image:
+    linear-gradient(rgba(0,0,0,0.5),
+    rgba(0,0,0,0.5)),
+    url("C:/Users/krish/OneDrive/Pictures/Saved Pictures/coimage.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+.hero button{
+
+    padding:14px 30px;
+    border:none;
+    background:orange;
+    color:white;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+/* About */
+
+.about{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.about h2{
+    margin-bottom:20px;
+}
+
+/* Menu */
+
+.coffee-items{
+    padding:80px 20px;
+    background:#d6ae65;
+}
+
+.coffee-container{
+
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+/* Card */
+
+.card{
+
+    background:white;
+
+    width:300px;
+
+    min-height:520px;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+
+    transition:0.3s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    cursor:pointer;
+}
+
+.card h3{
+    margin-top:20px;
+    font-size:24px;
+}
+
+.card p{
+    margin-top:10px;
+    font-size:18px;
+}
+
+.card h2{
+    margin-top:15px;
+    color:#8b5e3c;
+    font-size:40px;
+}
+
+.buy-btn{
+
+    margin-top:20px;
+    padding:12px 28px;
+    border:none;
+    background:orange;
+    color:white;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.buy-btn:hover{
+    background:darkorange;
+}
+
+/* Popup */
+
+.popup{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.7);
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:2000;
+}
+
+.popup-content{
+
+    background:white;
+    width:500px;
+    padding:30px;
+    border-radius:20px;
+    position:relative;
+}
+
+.close-btn{
+
+    position:absolute;
+    top:10px;
+    right:20px;
+
+    font-size:35px;
+    cursor:pointer;
+}
+
+.popup-content h1{
+    margin-bottom:20px;
+}
+
+.popup-content p,
+.popup-content li{
+    font-size:20px;
+    line-height:35px;
+}
+
+/* Bill */
+
+.bill-box{
+    text-align:center;
+}
+
+.bill-box h1{
+    margin-bottom:20px;
+}
+
+.bill-box p{
+    font-size:22px;
+    margin:15px 0;
+}
+
+/* Contact */
+
+#contact{
+
+    padding:80px 20px;
+    text-align:center;
+
+    background-image:
+    linear-gradient(rgba(0,0,0,0.5),
+    rgba(0,0,0,0.5)),
+
+    url("C:/Users/krish/OneDrive/Pictures/images.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+#contact h2{
+    color:white;
+    margin-bottom:40px;
+    font-size:50px;
+}
+
+.contact-box{
+
+    background:#d6ae65;
+    max-width:500px;
+    margin:auto;
+    padding:40px;
+    border-radius:20px;
+}
+
+.contact-item{
+    margin-bottom:25px;
+}
+
+.contact-link{
+    text-decoration:none;
+    color:#333;
+    font-size:20px;
+}
+
+footer{
+    background:black;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav>
+
+    <h2>Coffee Haven</h2>
+
+    <ul>
+
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#menu">Menu</a></li>
+
+        <li><a href="#about">About</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- Hero -->
+
+<section class="hero" id="home">
+
+    <h1>Fresh Coffee Everyday</h1>
+
+    <p>
+        Start Your Day With A Fresh Coffee
+    </p>
+
+    <button onclick="goToMenu()">
+        Order Now
+    </button>
+
+</section>
+
+<!-- About -->
+
+<section class="about" id="about">
+
+    <h2>About Our Coffee</h2>
+
+    <p>
+        We provide fresh and tasty coffee made with quality beans.
+    </p>
+
+</section>
+
+<!-- Menu -->
+
+<section class="coffee-items" id="menu">
+
+    <h2 style="text-align:center; font-size:35px;">
+        Our Menu
+    </h2>
+
+    <br><br>
+
+    <div class="coffee-container">
+
+        <!-- Regular -->
+
+        <div class="card">
+
+            <img src="C:\Users\krish\OneDrive\Pictures\Saved Pictures\hotcoffee-1.jpg"
+
+            onclick="showCoffee(
+
+            'Regular Coffee',
+
+            'Regular coffee gives freshness and energy.',
+
+            ['Boosts energy','Improves focus','Refreshes mood','Rich in antioxidants']
+
+            )">
+
+            <h3>Regular Coffee</h3>
+
+            <p>Simple and fresh</p>
+
+            <h2>₹99</h2>
+
+            <button class="buy-btn"
+
+            onclick="showBill('Regular Coffee','₹99')">
+
+            Buy Now
+
+            </button>
+
+        </div>
+
+        <!-- Cappuccino -->
+
+        <div class="card">
+
+            <img src="C:\Users\krish\OneDrive\Pictures\Saved Pictures\Cappuccino.jpg"
+
+            onclick="showCoffee(
+
+            'Cappuccino',
+
+            'Cappuccino is creamy and smooth coffee.',
+
+            ['Reduces stress','Improves mood','Gives freshness','Boosts concentration']
+
+            )">
+
+            <h3>Cappuccino</h3>
+
+            <p>Hot and creamy coffee.</p>
+
+            <h2>₹149</h2>
+
+            <button class="buy-btn"
+
+            onclick="showBill('Cappuccino','₹149')">
+
+            Buy Now
+
+            </button>
+
+        </div>
+
+        <!-- Latte -->
+
+        <div class="card">
+
+            <img src="C:\Users\krish\OneDrive\Pictures\Saved Pictures\Latte.jpg"
+
+            onclick="showCoffee(
+
+            'Latte',
+
+            'Latte is milk-based soft coffee.',
+
+            ['Calcium from milk','Smooth taste','Improves energy','Relaxing drink']
+
+            )">
+
+            <h3>Latte</h3>
+
+            <p>Fresh milk coffee taste.</p>
+
+            <h2>₹179</h2>
+
+            <button class="buy-btn"
+
+            onclick="showBill('Latte','₹179')">
+
+            Buy Now
+
+            </button>
+
+        </div>
+
+        <!-- Espresso -->
+
+        <div class="card">
+
+            <img src="C:\Users\krish\OneDrive\Pictures\Saved Pictures\Espresso.jpg"
+
+            onclick="showCoffee(
+
+            'Espresso',
+
+            'Espresso is strong rich coffee.',
+
+            ['High energy','Strong flavor','Improves alertness','Quick refreshment']
+
+            )">
+
+            <h3>Espresso</h3>
+
+            <p>Strong and rich flavor.</p>
+
+            <h2>₹129</h2>
+
+            <button class="buy-btn"
+
+            onclick="showBill('Espresso','₹129')">
+
+            Buy Now
+
+            </button>
+
+        </div>
+
+        <!-- Mocha -->
+
+        <div class="card">
+
+            <img src="C:\Users\krish\OneDrive\Pictures\Saved Pictures\mocha.jpg"
+
+            onclick="showCoffee(
+
+            'Mocha Coffee',
+
+            'Mocha coffee is a chocolate flavored creamy coffee.',
+
+            ['Chocolate taste','Boosts mood','Gives energy','Creamy and smooth']
+
+            )">
+
+            <h3>Mocha Coffee</h3>
+
+            <p>Chocolate creamy coffee.</p>
+
+            <h2>₹199</h2>
+
+            <button class="buy-btn"
+
+            onclick="showBill('Mocha Coffee','₹199')">
+
+            Buy Now
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Coffee Popup -->
+
+<div id="coffee-info" class="popup">
+
+    <div class="popup-content">
+
+        <span class="close-btn"
+        onclick="closePopup()">
+
+        ×
+
+        </span>
+
+        <h1 id="coffee-title"></h1>
+
+        <p id="coffee-description"></p>
+
+        <h2>Benefits</h2>
+
+        <ul id="coffee-benefits"></ul>
+
+    </div>
+
+</div>
+
+<!-- Bill Popup -->
+
+<div id="bill-popup" class="popup">
+
+<div class="popup-content bill-box">
+
+    <span class="close-btn"
+    onclick="closeBill()">
+
+    ×
+
+    </span>
+
+    <h1>Order Bill</h1>
+
+    <p id="bill-name"></p>
+
+    <p id="bill-price"></p>
+
+    <p>GST : ₹10</p>
+
+    <hr><br>
+
+    <h2 id="bill-total"></h2>
+
+    <br>
+
+    <h3>Select Payment Method</h3>
+
+    <br>
+
+    <button class="buy-btn"
+    onclick="confirmOrder('UPI')">
+
+    Pay with UPI
+
+    </button>
+
+    <button class="buy-btn"
+    onclick="confirmOrder('Card')">
+
+    Pay with Card
+
+    </button>
+
+    <button class="buy-btn"
+    onclick="confirmOrder('Cash')">
+
+    Cash on Delivery
+
+    </button>
+
+</div>
+
+</div>
+
+<!-- Success Popup -->
+
+<div id="success-popup" class="popup">
+
+<div class="popup-content bill-box">
+
+    <span class="close-btn"
+    onclick="closeSuccess()">
+
+    ×
+
+    </span>
+
+    <h1>
+        ✅ Order Confirmed
+    </h1>
+
+    <br>
+
+    <p id="payment-method"></p>
+
+    <p>
+        Your coffee will arrive soon ☕
+    </p>
+
+</div>
+
+</div>
+
+<!-- Contact -->
+
+<section id="contact">
+
+    <h2>Contact Us</h2>
+
+    <div class="contact-box">
+
+        <div class="contact-item">
+
+            <h3>Email</h3>
+
+            <p>
+
+                <a href="mailto:coffee@gmail.com"
+                class="contact-link">
+
+                coffee@gmail.com
+
+                </a>
+
+            </p>
+
+        </div>
+
+        <div class="contact-item">
+
+            <h3>Phone</h3>
+
+            <p>
+
+                <a href="tel:+919876543210"
+                class="contact-link">
+
+                +91 9876543210
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Footer -->
+
+<footer>
+
+    © 2026 Coffee Website
+
+</footer>
+
+<script>
+
+function showCoffee(title, description, benefits){
+
+    document.getElementById("coffee-info").style.display = "flex";
+
+    document.getElementById("coffee-title").innerText = title;
+
+    document.getElementById("coffee-description").innerText = description;
+
+    let list = "";
+
+    benefits.forEach(function(item){
+
+        list += "<li>" + item + "</li>";
+
+    });
+
+    document.getElementById("coffee-benefits").innerHTML = list;
+}
+
+function closePopup(){
+
+    document.getElementById("coffee-info").style.display = "none";
+}
+
+function showBill(name, price){
+
+    document.getElementById("bill-popup").style.display = "flex";
+
+    document.getElementById("bill-name").innerText =
+    "Coffee : " + name;
+
+    document.getElementById("bill-price").innerText =
+    "Price : " + price;
+
+    let total =
+    parseInt(price.replace("₹","")) + 10;
+
+    document.getElementById("bill-total").innerText =
+    "Total : ₹" + total;
+}
+
+function closeBill(){
+
+    document.getElementById("bill-popup").style.display = "none";
+}
+
+function confirmOrder(method){
+
+    document.getElementById("bill-popup").style.display = "none";
+
+    document.getElementById("success-popup").style.display = "flex";
+
+    document.getElementById("payment-method").innerText =
+    "Payment Method : " + method;
+}
+
+function goToMenu(){
+
+    document.getElementById("menu")
+    .scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+}
+
+function closeSuccess(){
+
+    document.getElementById("success-popup").style.display = "none";
+}
+
+</script>
+
+</body>
+
+</html>
